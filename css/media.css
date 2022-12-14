@@ -1,0 +1,55 @@
+@media (max-width: 10000px) {
+
+  /* Header */
+
+  .burger,
+  .burger__menu {
+    display: none;
+  }
+
+}
+
+@media(max-width:723px) { 
+
+  /* Header */
+
+  .header__row {
+    text-align: center;
+  }
+  
+  .logo {
+    margin-bottom: 30px;
+  }
+
+  .nav__list {
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  /* Header */
+
+  .container {
+    padding: 0;
+  }
+
+  .burger,
+  .burger__menu {
+    display: block;
+  }
+
+  .nav__list {
+    display: none;
+  }
+
+  .header__row {
+    text-align: left;
+  }
+
+  .logo {
+    margin-bottom: 0;
+  }
+
+}

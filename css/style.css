@@ -49,103 +49,210 @@
     margin: 0;
   }
 
-  .container-fluid {
+  .container {
     max-width: 1134px;
+    padding: 0 39px;
   }
 
   :root {
     --colorBlue: #3F2AFF;
-    --colorWight: #ffffff;
+    --colorWhite: #ffffff;
     --colorDark: #2E2B44;
     --colorGrey: #666666;
     --colorLightGrey: #85859B;
   }
 
-  .btn {
-    display: inline-block;
-    padding: 24px 75px;
-    border-radius: 20px;
-    background-color: var(--colorBlue);
-    color: var(--colorWight);
+  .container {
+    max-width: 1178px;
+  }
+
+  /* Burger menu */
+
+  .burger {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer; 
+  }
+  
+  .burger__line,
+  .burger__line::before,
+  .burger__line::after  {
+    display: block;  
+    width: 30px;
+    height: 2px;
+    background-color: var(--colorWhite);
+    -webkit-transition: width .3s ease;
+    -o-transition: width .3s ease;
+    transition: width .3s ease;
+  }
+  
+  .burger__line::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    -webkit-transform-origin: 0% 0%;
+        -ms-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    transition: -webkit-transform .3s ease-in-out;
+    -o-transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  }
+  
+  .burger__line::after {
+    content: '';
+    position: absolute;
+    top: 34px;
+    -webkit-transform-origin: 0% 100%;
+        -ms-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    transition: -webkit-transform .3s ease-in-out;
+    -o-transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  }
+  
+  .burger input {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 40px;
+    height: 42px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 3;
+    -webkit-transform: translateY(-15px);
+        -ms-transform: translateY(-15px);
+            transform: translateY(-15px);    
+  }
+  
+  .burger-menu {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    background-color: rgba(13, 18, 60, 0.9);
+    -webkit-transform: translateX(-101%);
+        -ms-transform: translateX(-101%);
+            transform: translateX(-101%);
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    transition: -webkit-transform .3s ease-in-out;
+    -o-transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  }
+  
+  .is-active {
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+  }
+  
+  .burger-menu__item {
+    margin-top: 30px;
+  }
+  
+  .burger-menu__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin-top: 75px;
+    height: 100%;
+  }
+  
+  .burger-menu__link {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 400;
+    color: var(--colorWhite);
+    -webkit-transition: color .3s ease;
+    -o-transition: color .3s ease;
+    transition: color .3s ease;
+  }
+  
+  .burger-menu__link:hover {
+    color: var(--colorLightGrey);
+  }
+  
+  .burger__input:checked ~ .burger__line::before {
+    -webkit-transform: rotate(45deg) translate(-1px, -1px);
+        -ms-transform: rotate(45deg) translate(-1px, -1px);
+            transform: rotate(45deg) translate(-1px, -1px);
+    background-color: var(--colorWhite);
+  }
+  
+  .burger__input:checked ~ .burger__line::after {
+    background-color: var(--colorWhite);
+    -webkit-transform: rotate(-45deg) translate(0, -1px);
+        -ms-transform: rotate(-45deg) translate(0, -1px);
+            transform: rotate(-45deg) translate(0, -1px);
+  }
+  
+  .burger__input:checked ~ .burger__line {
+    background-color: rgba(0, 0, 0, 0);
   }
 
   /* Header */
 
   .header {
-    height: 80px;
-    background: var(--colorBlue);
-  }  
-
-  .header__container,
-  .header__row {
-    height: 100%;
+    padding: 30px;  
+    background-color: var(--colorBlue);      
   }
 
-  .header__list {
+  .nav__list {
     display: flex;
+    justify-content: flex-end;
   }
 
-  .header__item {    
-    font-size: 18px;
-    line-height: 21px;
-    font-weight: 400;
-  }
-
-  .header__link {
-    color: var(--colorWight);
-  }
-
-  .header__item:not(:last-child) {
+  .nav__item:not(:last-child) {
     margin-right: 56px;
   }
 
-  .header__item::after {
+  .nav__item {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;    
+  }
+
+  .nav__link {
+    color: var(--colorWhite);
+  }
+
+  .nav__item::after {
     content: '';
     display: block;
     width: 0%;
     height: 1px;
-    background-color: #ffffff;
+    background-color: var(--colorWhite);
     transition: width .3s ease;
   }
 
-  .header__item:hover::after {
+  .nav__item:hover::after {
     width: 100%;
   }
 
-  /* Hero */
   
-  .hero {
-    padding: 15px 0 12px 0;
-    background: radial-gradient(44.07% 44.07% at 67.78% 55.93%, #555681 0%, #212133 100%);
-  }
-
-  .hero__heading {
-    font-weight: 700;
-    font-size: 60px;
-    line-height: 100%;
-    color: var(--colorWight);
-  }
-
-  .hero__description {
-    margin-top: 30px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 150%;
-    color: var(--colorWight);
-  }
   
-  .hero__btn {
-    margin-top: 70px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 21px;
-  }
-
-  .hero__img {
-    max-width: 633px;
-    width: 100%;
-    height: auto;
-  }
-  
-
   
